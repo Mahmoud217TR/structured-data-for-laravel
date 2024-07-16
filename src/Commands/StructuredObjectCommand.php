@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Mahmoud217TR\StructuredObject\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class StructuredObjectCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'structured-data-for-laravel';
 
     public $description = 'My command';
 
