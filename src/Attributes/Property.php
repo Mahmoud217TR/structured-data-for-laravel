@@ -3,24 +3,22 @@
 namespace Mahmoud217TR\StructuredObject\Attributes;
 
 use Attribute;
-use Illuminate\Auth\Events\Validated;
 use ReflectionClass;
 use ReflectionProperty;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Property
 {
-    public function __construct(public array|string|null $type = null)
-    {
-    }
+    public function __construct(public array|string|null $type = null) {}
 
     public static function extractProperties(object $object): array
     {
         $reflectionClass = new ReflectionClass($object);
+
         return array_values(
             array_filter(
                 $reflectionClass->getProperties(),
-                fn($reflectionProperty) => filled($reflectionProperty->getAttributes(self::class))
+                fn ($reflectionProperty) => filled($reflectionProperty->getAttributes(self::class))
             )
         );
     }
@@ -31,6 +29,7 @@ class Property
         foreach (static::extractProperties($object) as $property) {
             $names[] = $property->getName();
         }
+
         return $names;
     }
 
@@ -49,7 +48,7 @@ class Property
         $actualType = is_object($value) ? get_class($value) : gettype($value);
         $expectedType = $attribute->getArguments();
 
-        if (filled($expectedType) && !is_null($value)) {
+        if (filled($expectedType) && ! is_null($value)) {
             $expectedType = $expectedType[0];
         } else {
             return;
@@ -58,11 +57,11 @@ class Property
         if (is_array($expectedType)) {
             throw_unless(
                 in_array($actualType, $expectedType),
-                "Property '{$property->getName()}' should be one of the types: " . implode(', ', $expectedType) . ", {$actualType} given."
+                "Property '{$property->getName()}' should be one of the types: ".implode(', ', $expectedType).", {$actualType} given."
             );
         }
 
-        if(is_string($expectedType)) {
+        if (is_string($expectedType)) {
             throw_unless(
                 $actualType == $expectedType,
                 "Property '{$property->getName()}' should be of type {$expectedType}, {$actualType} given."

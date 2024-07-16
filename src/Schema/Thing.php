@@ -13,7 +13,7 @@ use Mahmoud217TR\StructuredObject\Properties\IdentifierProperty;
 use Mahmoud217TR\StructuredObject\Properties\NameProperty;
 use ReflectionClass;
 
-class Thing implements Jsonable, Arrayable
+class Thing implements Arrayable, Jsonable
 {
     use AdditionalTypeProperty;
     use AlternateNameProperty;
@@ -36,6 +36,7 @@ class Thing implements Jsonable, Arrayable
     public function setAttribute(string $key, $value = null): static
     {
         $this->$key = $value;
+
         return $this;
     }
 
@@ -43,7 +44,7 @@ class Thing implements Jsonable, Arrayable
     {
         $attributes = [];
 
-        if (!$hideContext) {
+        if (! $hideContext) {
             $attributes['@context'] = $this->getContext();
         }
 
@@ -68,8 +69,8 @@ class Thing implements Jsonable, Arrayable
             $attributes[$name] = $value;
         }
 
-        if (!$asArray) {
-            $attributes = (object)$attributes;
+        if (! $asArray) {
+            $attributes = (object) $attributes;
         }
 
         return $attributes;
@@ -97,6 +98,6 @@ class Thing implements Jsonable, Arrayable
 
     protected static function getContext(): string
     {
-        return "https://schema.org/";
+        return 'https://schema.org/';
     }
 }

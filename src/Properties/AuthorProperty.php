@@ -11,7 +11,7 @@ use Mahmoud217TR\StructuredObject\Schema\Person;
  * The author of this content or rating.
  *
  * https://schema.org/author
-*/
+ */
 trait AuthorProperty
 {
     #[Property(Person::class)]

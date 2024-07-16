@@ -3,8 +3,8 @@
 namespace Mahmoud217TR\StructuredObject\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Mahmoud217TR\StructuredObject\StructuredObjectServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

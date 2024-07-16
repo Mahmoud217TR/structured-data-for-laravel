@@ -10,7 +10,7 @@ use Mahmoud217TR\StructuredObject\Attributes\Property;
  * A description of the item.
  *
  * https://schema.org/additionalType
-*/
+ */
 trait AdditionalTypeProperty
 {
     #[Property('string')]

@@ -2,9 +2,9 @@
 
 namespace Mahmoud217TR\StructuredObject;
 
+use Mahmoud217TR\StructuredObject\Commands\StructuredObjectCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mahmoud217TR\StructuredObject\Commands\StructuredObjectCommand;
 
 class StructuredObjectServiceProvider extends PackageServiceProvider
 {

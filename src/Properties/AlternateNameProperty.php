@@ -10,7 +10,7 @@ use Mahmoud217TR\StructuredObject\Attributes\Property;
  * An alias for the item.
  *
  * https://schema.org/alternateName
-*/
+ */
 trait AlternateNameProperty
 {
     #[Property('string')]

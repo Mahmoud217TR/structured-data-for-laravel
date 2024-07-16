@@ -10,7 +10,7 @@ use Mahmoud217TR\StructuredObject\Attributes\Property;
  * The name of the item.
  *
  * https://schema.org/name
-*/
+ */
 trait NameProperty
 {
     #[Property('string')]

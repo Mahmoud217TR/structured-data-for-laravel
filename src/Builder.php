@@ -12,18 +12,19 @@ class Builder
 
     protected Thing $object;
 
-    public function __construct(Thing|string $object = null)
+    public function __construct(Thing|string|null $object = null)
     {
         $this->object = static::getObjectInstance($object);
         foreach ($this->object->getAttributes() as $attribute) {
             static::macro($attribute, function ($value) use ($attribute) {
                 $this->addAttribute($attribute, $value);
+
                 return $this;
             });
         }
     }
 
-    public static function object(Thing|string $object = null): static
+    public static function object(Thing|string|null $object = null): static
     {
         return new static($object);
     }
@@ -31,16 +32,18 @@ class Builder
     public function build(): Thing
     {
         Property::validatePropertyTypes($this->object);
+
         return $this->object;
     }
 
     public function addAttribute(string $key, $value = null): static
     {
         $this->object->setAttribute($key, $value);
+
         return $this;
     }
 
-    protected static function getObjectInstance(Thing|string $object = null): Thing
+    protected static function getObjectInstance(Thing|string|null $object = null): Thing
     {
         if (is_null($object)) {
             return new Thing();
